@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
 import RoutesCustom from "./routes";
 import { BrowserRouter } from "react-router-dom";
-import "./App.css";
 import styled from "styled-components";
 
 function App() {

@@ -3,15 +3,16 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
+import NotFound from "./pages/NotFound";
 
- const RoutesCustom = () => {
+const RoutesCustom = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route exact path="/" element={<Home />} />
       <Route path="/game" element={<Game />} />
-      <Route path="*" element={<>Page not found</>}/>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
 
-export default RoutesCustom
+export default RoutesCustom;

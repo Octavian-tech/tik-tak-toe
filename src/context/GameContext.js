@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 const actionTypes = {
   SET_PLAYERS: "SET_PLAYERS",
@@ -42,9 +43,6 @@ const reducer = (state, action) => {
     case actionTypes.RESTART_GAME:
       return {
         ...initialState,
-        winner: null,
-        players: action.payload,
-        currentPlayer:  "X",
       };
     case actionTypes.TOGGLE_PLAYER:
       return {
@@ -99,14 +97,11 @@ export default function GameProvider({ children }) {
     dispatch({ type: "SET_PLAYERS", payload: players });
   };
 
-  const handleRestartGame = (players) => {
-    console.log(players);
-    dispatch({ type: "RESTART_GAME", payload: players });
-  };
+
 
   return (
     <GameContext.Provider
-      value={{ state, dispatch, handleSetPlayers, handleRestartGame }}
+      value={{ state, dispatch, handleSetPlayers }}
     >
       {children}
     </GameContext.Provider>

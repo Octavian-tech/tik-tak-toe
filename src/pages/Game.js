@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GameContext } from "../context/GameContext";
-
 import Board from "../components/Board";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -8,14 +7,19 @@ import { useNavigate } from "react-router-dom";
 function Game() {
   const navigate = useNavigate();
 
-  const { state, dispatch, handleRestartGame } = useContext(GameContext);
+  const { state, dispatch } = useContext(GameContext);
 
   const handleNewGame = () => {
     dispatch({ type: "RESET_GAME" });
     navigate("/");
   };
 
-  console.log(state.players);
+  const handleRestartGame = (players) => {
+    dispatch({ type: "RESTART_GAME" });
+    dispatch({ type: "SET_PLAYERS", payload: players });
+    navigate("/game");
+  };
+
   return (
     <div
       style={{
@@ -38,7 +42,7 @@ function Game() {
       >
         <Button
           textContent="Restart Game"
-          handleOnClick={() => handleRestartGame(state.players)}
+          handleOnClick={() => handleRestartGame({ 1: "X", 2: "O" })}
         />
         <Button textContent="New Game" handleOnClick={handleNewGame} />
       </div>

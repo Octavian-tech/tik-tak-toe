@@ -10,7 +10,6 @@ function Home() {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     align-items: center;
   `;
 
@@ -25,9 +24,15 @@ function Home() {
     const playerName = e.target.name;
     const value = e.target.value.toUpperCase();
 
-    if (playerName === "player1" && (value === "O" || value === "X")) {
+    if (
+      playerName === "player1" &&
+      (value === "O" || value === "X" || value === "")
+    ) {
       setPlayers({ ...players, 1: value });
-    } else if (playerName === "player2" && (value === "O" || value === "X")) {
+    } else if (
+      playerName === "player2" &&
+      (value === "O" || value === "X" || value === "")
+    ) {
       setPlayers({ ...players, 2: value });
     } else {
       alert("Introduceti doar X sau O");
